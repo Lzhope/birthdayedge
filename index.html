@@ -1,0 +1,121 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- 登录界面 -->
+    <div id="login-overlay">
+        <!-- 装饰元素 -->
+        <div class="login-deco d1"></div>
+        <div class="login-deco d2"></div>
+        <div class="login-deco d3"></div>
+        <div class="login-deco d4"></div>
+        <div class="login-deco d5"></div>
+        <div class="login-deco d6"></div>
+        <div class="login-deco d7"></div>
+        <div class="login-deco d8"></div>
+        <div class="login-star s1"></div>
+        <div class="login-star s2"></div>
+        <div class="login-star s3"></div>
+        <div class="login-star s4"></div>
+        <div class="login-star s5"></div>
+        <div class="login-star s6"></div>
+        <div class="login-star s7"></div>
+        <div class="login-star s8"></div>
+        <div class="login-star s9"></div>
+        <div class="login-star s10"></div>
+        <div class="login-box">
+            <h1 class="login-title">🎂 生日祝福</h1>
+            <p class="login-desc">请输入账号密码解锁祝福</p>
+            <div class="login-form">
+                <div class="login-field">
+                    <label>账号</label>
+                    <input type="text" id="login-account" placeholder="请输入账号" autocomplete="off">
+                </div>
+                <div class="login-field">
+                    <label>密码</label>
+                    <input type="password" id="login-password" placeholder="请输入密码">
+                </div>
+                <button id="login-btn">进入祝福 🎉</button>
+                <p id="login-error" class="login-error"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 粒子倒计时页 -->
+    <div id="particle-countdown">
+        <canvas id="particle-canvas"></canvas>
+        <button id="birth-start-btn" disabled>加载中...</button>
+    </div>
+
+    <!-- BGM - 首页（生日快乐钢琴版） -->
+    <audio id="bgm-home" loop style="display:none">
+        <source src="music/生日快乐钢琴版.mp3" />
+    </audio>
+
+    <!-- 气球容器 -->
+    <div id="balloon-container"></div>
+
+    <!-- 彩带 -->
+    <canvas id="brith-confetti"></canvas>
+
+    <!-- 主内容 -->
+    <div class="main">
+        <div class="container pt-5">
+            <div class="row">
+                <!-- 横幅图 -->
+                <div class="col-12 col-xl-6 mx-auto">
+                    <img src="img/banner.png" alt="banner.png">
+                </div>
+
+                <!-- 寿星 -->
+                <div class="col-12  text-center">
+                    <div id="name" class="birth-people-name">吴雅玲</div>
+                </div>
+
+                <!-- 祝词 -->
+                <div class="col-12 text-center">
+                    <div class="birth-greeting-word">
+                        <div id="greeting-word" class="typing">
+                            <h2><span>生日快乐呀，</span><i id="inline-name" class="birth-inline-people-name">雅玲</i><span id="people-type">小姐姐</span></h2>
+                            <h2>且喜且乐，且以永日</h2>
+                            <h2>一寸一礼，一寸欢喜</h2>
+                            <h2>遥叩芳辰，生辰吉乐</h2>
+                        </div>
+                        <span id="typed" style="white-space: pre;"></span>
+                    </div>
+                </div>
+
+                <!-- 蛋糕图 -->
+                <div class="col-12 col-xl-3 birth-cake">
+                    <img src="img/cake.gif" alt="cake.gif">
+                </div>
+
+                <!-- 前往蛋糕许愿按钮 -->
+                <div class="col-12 text-center">
+                    <button id="go-cake-btn" class="go-cake-btn" style="display:none;">🎂 前往蛋糕许愿 →</button>
+                </div>
+
+                <!-- 版权 -->
+                <div class="col-12 text-center">
+                    <span class="birth-greeting-word" id="author">&copy;2024 Spring-_-Bear</span>
+                </div>
+            </div>
+        </div>
+
+    <script src="js/lib/snowflakes.min.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/typed.min.js"></script>
+    <script src="js/lib/dayjs.min.js"></script>
+    <script src="js/confetti.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

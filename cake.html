@@ -1,0 +1,403 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 许愿蛋糕</title>
+
+    <link rel="stylesheet" href="css/cake.css">
+</head>
+
+<body>
+    <!-- 蛋糕场景 -->
+    <div id="cake-scene">
+        <!-- 浮动背景装饰 -->
+        <div class="cake-float-el cfe-1">🌟</div>
+        <div class="cake-float-el cfe-2">✨</div>
+        <div class="cake-float-el cfe-3">💫</div>
+        <div class="cake-float-el cfe-4">🌸</div>
+        <div class="cake-float-el cfe-5">🎀</div>
+        <div class="cake-float-el cfe-6">⭐</div>
+        <div class="scene-content">
+            <!-- 蛋糕容器 -->
+            <div class="cake-container">
+
+                <!-- 盘子 -->
+                <div class="cake-plate"></div>
+
+                <!-- 第5层 - 巧克力 (底部) -->
+                <div class="cake-layer layer-choco">
+                    <div class="cream-swirl"></div>
+                </div>
+                <!-- 夹心4 - 草莓酱 -->
+                <div class="filling f4"></div>
+
+                <!-- 第4层 - 香草 -->
+                <div class="cake-layer layer-vanilla">
+                    <div class="cream-swirl"></div>
+                </div>
+                <!-- 夹心3 - 橙子酱 -->
+                <div class="filling f3"></div>
+
+                <!-- 第3层 - 抹茶 -->
+                <div class="cake-layer layer-matcha">
+                    <div class="cream-swirl"></div>
+                </div>
+                <!-- 夹心2 - 蓝莓酱 -->
+                <div class="filling f2"></div>
+
+                <!-- 第2层 - 草莓 -->
+                <div class="cake-layer layer-strawberry">
+                    <div class="cream-swirl"></div>
+                    <span class="fruit-deco fruit-left">🍓</span>
+                    <span class="fruit-deco fruit-right">🍒</span>
+                </div>
+                <!-- 夹心1 - 覆盆子酱 -->
+                <div class="filling f1"></div>
+
+                <!-- 顶层 - 椰子奶油 -->
+                <div class="cake-layer layer-top">
+                    <div class="top-cream-swirls"></div>
+                    <span class="cherry cherry-left"></span>
+                    <span class="cherry cherry-right"></span>
+                    <div class="sprinkles-container">
+                        <span class="sprinkle s1"></span>
+                        <span class="sprinkle s2"></span>
+                        <span class="sprinkle s3"></span>
+                        <span class="sprinkle s4"></span>
+                        <span class="sprinkle s5"></span>
+                        <span class="sprinkle s6"></span>
+                    </div>
+                    <!-- 蜡烛 -->
+                    <div class="candle-wrapper">
+                        <div class="flame" id="cake-flame"></div>
+                        <div class="flame-glow"></div>
+                        <div class="candle-stick"></div>
+                        <div class="candle-base"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 许愿提示 -->
+            <div class="cake-wish-prompt">
+                <p class="cake-wish-text">🌟 闭上眼睛，许个愿望吧~</p>
+                <button class="cake-wish-btn">我许好了 ✨</button>
+            </div>
+
+            <!-- 吹蜡烛提示 -->
+            <p class="cake-sub-hint" style="display:none;">👆 点击蜡烛火焰吹灭它~</p>
+
+            <!-- 祝福结果 -->
+            <div class="blow-result" style="display:none;">
+                <p class="blow-text"></p>
+            </div>
+
+            <!-- 返回按钮 -->
+            <div class="back-link" style="display:none;">
+                <button class="back-btn" onclick="location.href='index.html'">返回首页 💝</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 信件区域 - 4 封随机散落 -->
+    <div id="letter-container" style="display:none;">
+        <div class="letter-float lf-1">🌸</div>
+        <div class="letter-float lf-2">💖</div>
+        <div class="letter-float lf-3">✨</div>
+        <div class="letter-float lf-4">🌷</div>
+        <div class="letter-float lf-5">💫</div>
+        <p class="letter-arrive-title">💌 有 4 封信飞到了你身边～</p>
+        <p class="letter-read-progress">已读 <span id="letter-read-count">0</span> / 4 封</p>
+        <div id="letter-scatter-container">
+            <!-- 辉 - 粉色中式信封 -->
+            <div class="envelope-scatter env-pink" data-letter="0">
+                <div class="envelope">
+                    <div class="env-border"></div>
+                    <div class="envelope-flap">
+                        <span class="flap-seal">❤️</span>
+                    </div>
+                    <div class="envelope-body">
+                        <div class="envelope-heart">💌</div>
+                        <span class="env-ribbon-v"></span>
+                        <span class="env-ribbon-h"></span>
+                    </div>
+                </div>
+                <span class="envelope-stamp">📮</span>
+                <span class="env-label">辉</span>
+            </div>
+            <!-- 莉 - 蓝色信封 -->
+            <div class="envelope-scatter env-blue" data-letter="1">
+                <div class="envelope">
+                    <div class="env-border"></div>
+                    <div class="envelope-flap">
+                        <span class="flap-seal">💎</span>
+                    </div>
+                    <div class="envelope-body">
+                        <div class="envelope-heart">💕</div>
+                        <span class="env-star-l">★</span>
+                        <span class="env-star-r">★</span>
+                    </div>
+                </div>
+                <span class="envelope-stamp">💮</span>
+                <span class="env-label">莉</span>
+            </div>
+            <!-- 雯 - 绿色清新信封 -->
+            <div class="envelope-scatter env-green" data-letter="2">
+                <div class="envelope">
+                    <div class="env-border"></div>
+                    <div class="envelope-flap">
+                        <span class="flap-seal">🍀</span>
+                    </div>
+                    <div class="envelope-body">
+                        <div class="envelope-heart">💪</div>
+                        <span class="env-leaf l1">🌿</span>
+                        <span class="env-leaf l2">🌱</span>
+                    </div>
+                </div>
+                <span class="envelope-stamp">🌸</span>
+                <span class="env-label">雯</span>
+            </div>
+            <!-- 霏 - 紫色浪漫信封 -->
+            <div class="envelope-scatter env-purple" data-letter="3">
+                <div class="envelope">
+                    <div class="env-border"></div>
+                    <div class="envelope-flap">
+                        <span class="flap-seal">✨</span>
+                    </div>
+                    <div class="envelope-body">
+                        <div class="envelope-heart">🤗</div>
+                        <span class="env-gem">💜</span>
+                    </div>
+                </div>
+                <span class="envelope-stamp">🌟</span>
+                <span class="env-label">霏</span>
+            </div>
+        </div>
+        <p class="letter-hint" style="display:none;">👆 点开收到的信看看吧~</p>
+    </div>
+
+    <!-- 信纸 0 - 辉 -->
+    <div class="letter-paper-wrapper" data-letter="0" style="display:none;">
+        <div class="letter-paper">
+            <div class="letter-header">🎂 致 亲爱的雅玲</div>
+            <div class="letter-line"></div>
+            <div class="letter-content">
+                <p>亲爱的雅玲：</p>
+                <p>在这个特别的日子里，</p>
+                <p>愿你的笑容如阳光般灿烂，</p>
+                <p>愿你的生活如蛋糕般甜美～</p>
+                <p>🎈 生日快乐，愿所有美好都如期而至！</p>
+                <p style="margin-top:20px;text-align:right;">—— 辉 💝</p>
+            </div>
+            <div class="close-letter">✕ 关闭</div>
+        </div>
+    </div>
+
+    <!-- 信纸 1 - 莉 -->
+    <div class="letter-paper-wrapper" data-letter="1" style="display:none;">
+        <div class="letter-paper">
+            <div class="letter-header">💌 来自 莉 的信</div>
+            <div class="letter-line"></div>
+            <div class="letter-content">
+                <p>宝宝生日快乐，天天开心，结识你的十年是最开心的十年，我们以后还要有很多很多个十年，说不完道不清的缘分，从最初的相识相伴到老到一起来到天津，再到现如今，我们的未来要一直交织在一起！闺蜜我爱你～</p>
+                <p style="margin-top:20px;text-align:right;">—— 莉 💕</p>
+            </div>
+            <div class="close-letter">✕ 关闭</div>
+        </div>
+    </div>
+
+    <!-- 信纸 2 - 雯 -->
+    <div class="letter-paper-wrapper" data-letter="2" style="display:none;">
+        <div class="letter-paper">
+            <div class="letter-header">💕 来自 雯 的信</div>
+            <div class="letter-line"></div>
+            <div class="letter-content">
+                <p>宝子，生日快乐。第二个10年，祝你身材越来越好，早日找到crush</p>
+                <p style="margin-top:20px;text-align:right;">—— 雯 💪</p>
+            </div>
+            <div class="close-letter">✕ 关闭</div>
+        </div>
+    </div>
+
+    <!-- 信纸 3 - 霏 -->
+    <div class="letter-paper-wrapper" data-letter="3" style="display:none;">
+        <div class="letter-paper">
+            <div class="letter-header">💖 来自 霏 的信</div>
+            <div class="letter-line"></div>
+            <div class="letter-content">
+                <p>吴雅玲，生日快乐。很庆幸生命里有你这个朋友，新的一岁不用事事完美，只愿你平安、开心，被好好爱着，我会一直陪着你。</p>
+                <p style="margin-top:20px;text-align:right;">—— 霏 🤗</p>
+            </div>
+            <div class="close-letter">✕ 关闭</div>
+        </div>
+    </div>
+
+    <!-- 多礼物选择页 -->
+    <div id="gift-container" style="display:none;">
+        <div class="gift-float gf-1">🎀</div>
+        <div class="gift-float gf-2">✨</div>
+        <div class="gift-float gf-3">💝</div>
+        <div class="gift-float gf-4">⭐</div>
+        <div class="gift-float gf-5">🎉</div>
+        <div class="gift-float gf-6">💖</div>
+        <p class="gift-arrive-title">🎁 有 3 份礼物在等着你</p>
+        <p class="gift-read-progress">已拆 <span id="gift-open-count">0</span> / 3 份</p>
+
+        <div class="gift-gallery">
+            <!-- 礼物 1：红丝带惊喜礼盒 -->
+            <div class="gift-item" data-gift="0">
+                <div class="gift-card">
+                    <div class="gift-box">
+                        <div class="gift-lid">
+                            <div class="lid-ribbon-v"></div>
+                            <div class="lid-ribbon-h"></div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon-v"></div>
+                            <div class="gift-ribbon-h"></div>
+                            <div class="gift-bow">🎀</div>
+                        </div>
+                    </div>
+                    <span class="gift-item-label">🎁 第一个礼物</span>
+                </div>
+            </div>
+            <!-- 礼物 2：视频礼盒（蓝） -->
+            <div class="gift-item video-gift" data-gift="1" data-video="1">
+                <div class="gift-card">
+                    <div class="gift-box gift-box-blue">
+                        <div class="gift-lid">
+                            <div class="lid-ribbon-v"></div>
+                            <div class="lid-ribbon-h"></div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon-v"></div>
+                            <div class="gift-ribbon-h"></div>
+                            <div class="gift-bow">🎀</div>
+                            <span class="gift-video-badge">🎬</span>
+                        </div>
+                    </div>
+                    <span class="gift-item-label">🎁 第二个礼物</span>
+                </div>
+            </div>
+            <!-- 礼物 3：视频礼盒（金） -->
+            <div class="gift-item video-gift" data-gift="2" data-video="2">
+                <div class="gift-card">
+                    <div class="gift-box gift-box-gold">
+                        <div class="gift-lid">
+                            <div class="lid-ribbon-v"></div>
+                            <div class="lid-ribbon-h"></div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon-v"></div>
+                            <div class="gift-ribbon-h"></div>
+                            <div class="gift-bow">🎀</div>
+                            <span class="gift-video-badge">🎬</span>
+                        </div>
+                    </div>
+                    <span class="gift-item-label">🎁 第三个礼物</span>
+                </div>
+            </div>
+        </div>
+        <p class="gift-hint">👆 点击礼物拆开看看吧~</p>
+    </div>
+
+    <!-- 视频播放器遮罩 -->
+    <div id="video-player-overlay" style="display:none;">
+        <div class="video-player-bg"></div>
+        <div class="video-player-card">
+            <video id="gift-video" controls autoplay>
+                <source id="gift-video-source" src="" type="video/mp4" />
+            </video>
+            <div class="video-close-area">
+                <button class="video-close-btn">✕ 关闭视频</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通用过渡遮罩 -->
+    <div id="transition-overlay" style="display:none;">
+        <div class="transition-inner">
+            <div class="transition-icon">💌</div>
+            <div class="transition-text">有几封信正在路上...</div>
+            <div class="transition-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 祝福弹窗容器 -->
+    <div id="popup-container"></div>
+
+    <!-- 写给未来自己的一封信 -->
+    <div id="future-letter" style="display:none;">
+        <div class="future-float ff-1">📬</div>
+        <div class="future-float ff-2">🌟</div>
+        <div class="future-float ff-3">💌</div>
+        <div class="future-float ff-4">✨</div>
+        <div class="future-float ff-5">🌙</div>
+        <div class="future-float ff-6">⭐</div>
+        <div class="future-card">
+            <h2 class="future-title">📝 给未来自己的一封信</h2>
+            <p class="future-desc">写一段话送给一年后的自己吧～</p>
+            <textarea id="future-message" placeholder="亲爱的自己，我想对你说..." maxlength="500"></textarea>
+            <div class="future-actions">
+                <button id="future-send-btn">💌 寄给未来</button>
+            </div>
+            <p id="future-status" class="future-status"></p>
+        </div>
+    </div>
+
+    <!-- 总结祝福语 -->
+    <div id="final-blessing" style="display:none;">
+        <div class="final-floating ff1">🎉</div>
+        <div class="final-floating ff2">✨</div>
+        <div class="final-floating ff3">💫</div>
+        <div class="final-floating ff4">🌟</div>
+        <div class="final-floating ff5">🎊</div>
+        <div class="final-floating ff6">💖</div>
+        <div class="final-floating ff7">🌸</div>
+        <div class="final-floating ff8">⭐</div>
+        <div class="final-card">
+            <div class="final-confetti-bg"></div>
+            <div class="final-content">
+                <div class="final-icon">🎉</div>
+                <h1 class="final-title">致 雅玲</h1>
+                <div class="final-line"></div>
+                <div class="final-summary">
+                    <p class="final-step">🌟 你许下了一个美好的愿望</p>
+                    <p class="final-step">🕯️ 吹灭了蜡烛，绽放了满天烟火</p>
+                    <p class="final-step">💌 收到了 4 封装满祝福的信</p>
+                    <p class="final-step">🎁 打开了 3 份朋友的礼物</p>
+                    <p class="final-step">💫 收获了 200 份暖心祝福</p>
+                    <p class="final-step">📬 还给未来的自己写了一封信</p>
+                </div>
+                <div class="final-divider"></div>
+                <div class="final-wish">
+                    <p>愿你的每一天都像今天一样</p>
+                    <p>被爱包围，被幸福填满 💝</p>
+                </div>
+                <div class="final-ending">
+                    <p>🎂 生日快乐，永远快乐！</p>
+                </div>
+                <div class="final-line"></div>
+                <div class="final-signature">—— 永远祝福你的朋友</div>
+                <div class="back-link">
+                    <button class="back-btn" onclick="location.href='index.html'">返回首页 💝</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/cake.js"></script>
+
+    <!-- BGM -->
+    <audio id="bgm-cake" preload="auto" src="music/生日快乐钢琴版.mp3" loop></audio>
+    <audio id="bgm-letter" preload="auto" src="music/童话.aac" loop></audio>
+</body>
+
+</html>
